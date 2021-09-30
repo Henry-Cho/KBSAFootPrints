@@ -1,3 +1,5 @@
+// calendar
+
 let calendar = {
     cur_year: new Date().getFullYear(),
     cur_month: new Date().getMonth(),
@@ -141,3 +143,6 @@ const display = () => {
     const body_body = document.querySelector(".body-body");
     body_body.innerHTML = html_string;
 }
+
+// banner
+
