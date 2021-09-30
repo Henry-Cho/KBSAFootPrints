@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./static/style.css">
     <script src="index.js" defer></script>
 </head>
-<body>
+<body onload="display()">
     <!-- Navigation -->
     <nav>
         <!-- logo -->
@@ -20,5 +20,36 @@
             <div class="menu">Contact</div>
         </div>
     </nav>
+    <!-- Main Banner (contains KBSA upcoming events, Fair ads) -->
+    <section class="banner">
+        <button id="prev"><</button>
+        <button id="next">></button>
+        <div class="img_container"></div>
+    </section>
+    <!-- calendar -->
+    <section class="container">
+        <!-- calendar frame -->
+        <div class="frame">
+            <!-- calendar header -->
+            <div class="cal-header">
+                <span id="month"></span>
+                <button id="prevC" onclick="goPrev()"><</button>
+                <button id="nextC" onclick="goNext()">></button>
+            </div>
+            <div class="cal-body">
+                <div class="body-header">
+                    <div id="sun">Sunday</div>
+                    <div>Monday</div>
+                    <div>Tuesday</div>
+                    <div>Wednesday</div>
+                    <div>Thursday</div>
+                    <div>Friday</div>
+                    <div>Saturday</div>
+                </div>
+                <div class="body-body">
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
