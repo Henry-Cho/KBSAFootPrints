@@ -58,14 +58,43 @@ nav {
     right: 30px;
 }
 
+/* modal */
+.modal_bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 2;
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    transform: translate(0%, -30%);
+    top: 50%;
+    width: 40%;
+    height: 40%;
+    background: antiquewhite;
+    opacity: 1;
+    z-index: 3;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px 20px;
+    display: none;
+}
+
 /* calendar */
 
 .container {
-    padding: 100px 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .frame {
-    width: 100%;
+    margin-top: 60px;
+    width: 70%;
     border: 1px double black;
     background-color: antiquewhite;
     display: flex;
@@ -138,6 +167,7 @@ nav {
     border-left: 1px solid black;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .cell.first {

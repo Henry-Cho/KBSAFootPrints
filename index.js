@@ -30,6 +30,26 @@ const goNext = () => {
     display();
 }
 
+// modal
+
+function popModal(e) {
+    console.log("ㅗㅑㅗㅑ",e);
+
+    // console.log(e.target.children[1]);
+
+    // const modal_bg = document.querySelector(".modal_bg");
+    // const modal = document.querySelector(".modal");
+    // const modal_date = document.querySelector(".modal_date");
+
+    // if (e.target.children[1].id === undefined) {
+    //     return;
+    // }
+    // modal_date.innerHTML = e.target.children[1].id;
+    // modal_bg.style.display="block";
+    // modal.style.display = "block";
+    
+}
+
 const display = () => {
     const cur_month = document.querySelector("#month");
     cur_month.innerHTML = `${calendar.cur_year} ${months[calendar.cur_month]}`;
@@ -60,7 +80,7 @@ const display = () => {
                 // first cell
                 if (j === 0 && j === start_day) {
                     html_string += `
-                    <div class="cell" id="cell${day_id}">
+                    <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
                             <div class="day">${day_id + 1}</div>
                             <div class="holiday"></div>
@@ -81,7 +101,7 @@ const display = () => {
                 // put cell id
                 if (j >= start_day) {
                     html_string += `
-                    <div class="cell" id="cell${day_id}">
+                    <div class="cell" id="cell${day_id}" onclick="popModal()">
                         <div class="upper">
                             <div class="day">${day_id + 1}</div>
                             <div class="holiday"></div>
@@ -144,5 +164,6 @@ const display = () => {
     body_body.innerHTML = html_string;
 }
 
-// banner
 
+
+// banner
