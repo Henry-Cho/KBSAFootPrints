@@ -3,6 +3,7 @@
 let calendar = {
     cur_year: new Date().getFullYear(),
     cur_month: new Date().getMonth(),
+    cur_day: ""
 };
 
 // get day = sun: 0 - sat: 6 || so today is wed: 3
@@ -32,32 +33,54 @@ const goNext = () => {
 
 // modal
 
+const closeModal = () => {
+    console.log("DJDJDJD")
+    const modal_bg = document.querySelector(".modal_bg");
+    console.log(modal_bg);
+    const modal = document.querySelector(".modal");
+
+    modal_bg.style.display="none";
+    modal.style.display = "none";
+}
+
 function popModal(e) {
-    console.log("ㅗㅑㅗㅑ",e);
 
-    // console.log(e.target.children[1]);
+    console.log(e.target.children[1]);
 
-    // const modal_bg = document.querySelector(".modal_bg");
-    // const modal = document.querySelector(".modal");
-    // const modal_date = document.querySelector(".modal_date");
+    const modal_bg = document.querySelector(".modal_bg");
+    const modal = document.querySelector(".modal");
+    const modal_date = document.querySelector(".modal_date");
 
-    // if (e.target.children[1].id === undefined) {
-    //     return;
-    // }
-    // modal_date.innerHTML = e.target.children[1].id;
-    // modal_bg.style.display="block";
-    // modal.style.display = "block";
+    if (e.target.children[1].id === undefined) {
+        return;
+    }
+    modal_date.innerHTML = e.target.children[1].id;
+    modal_bg.style.display="block";
+    modal.style.display = "block";
     
 }
 
+const days = {"SUN": "Sunday", "MON": "Monday", "TUE": "Tuesday", "WED": "Wednesday", "THU": "Thursday", "FRI": "Friday", "SAT": "Saturday"}
+
 const display = () => {
+    const day = new Date().toString().split(" ");
+
+    const num_date = new Date().toString().split(" ")[2];
+    const today_mon = new Date().getMonth();
+    const today_year = new Date().getFullYear();
+    
+    const is_cur_cal = (today_mon === calendar.cur_month) && (today_year === calendar.cur_year);
+
     const cur_month = document.querySelector("#month");
-    cur_month.innerHTML = `${calendar.cur_year} ${months[calendar.cur_month]}`;
+    cur_month.innerHTML = `${months[calendar.cur_month]} ${calendar.cur_year} `;
 
     let start_day = new Date(`${months[calendar.cur_month]} 1, 2020`).getDay() + 1;
 
     // start > 0 total row = original (5) + 1
     // else total row = 5
+    if (start_day >= 7) {
+        start_day = 0;
+    }
 
     let day_id = 0;
 
@@ -72,7 +95,7 @@ const display = () => {
     if (calendar.cur_month === 1) {
         row_num = 5;
     }
-
+{/* <div class="todo" id="${calendar.cur_year}-${months[calendar.cur_month]}-${day_id+1}"></div> */}
     for (let i = 0; i < row_num; i++) {
         html_string += `<div class="row">`;
         if (i === 0) {
@@ -80,12 +103,11 @@ const display = () => {
                 // first cell
                 if (j === 0 && j === start_day) {
                     html_string += `
-                    <div class="cell" id="cell${day_id}" onclick="popModal(event)">
+                    <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
-                            <div class="day">${day_id + 1}</div>
+                            <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
                             <div class="holiday"></div>
                         </div>
-                        <div class="todo" id="${calendar.cur_year}-${months[calendar.cur_month]}-${day_id+1}"></div>
                     </div>`;
                     ++day_id;
                     ++cell_count;
@@ -101,12 +123,11 @@ const display = () => {
                 // put cell id
                 if (j >= start_day) {
                     html_string += `
-                    <div class="cell" id="cell${day_id}" onclick="popModal()">
+                    <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
-                            <div class="day">${day_id + 1}</div>
+                            <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
                             <div class="holiday"></div>
                         </div>
-                        <div class="todo" id="${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}"></div>
                     </div>`;
                     ++day_id;
                     ++cell_count;
@@ -124,12 +145,11 @@ const display = () => {
             for (let j = 0; j < 7; j++) {
                 if (j === 0) {
                     html_string += `
-                    <div class="cell first" id="cell${day_id}">
+                    <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
-                            <div class="day">${day_id + 1}</div>
+                            <div class="${day_id + 1 === parseInt(num_date) && is_cur_cal? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
                             <div class="holiday"></div>
                         </div>
-                        <div class="todo" id="${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}"></div>
                     </div>`;
                     ++day_id;
                     ++cell_count;
@@ -146,12 +166,11 @@ const display = () => {
                     continue;
                 }
                 html_string += `
-                <div class="cell" id="cell${day_id}">
+                <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                     <div class="upper">
-                    <div class="day">${day_id + 1}</div>
+                    <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
                     <div class="holiday"></div>
                     </div>
-                    <div class="todo" id="${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}"></div>
                 </div>`;
                 ++day_id;
                 ++cell_count;
