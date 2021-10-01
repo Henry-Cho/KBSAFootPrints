@@ -54,18 +54,34 @@ function popModal(e) {
     console.log(e)
     // console.log(e.target.children[1]);
 
+    const schedule_date = document.querySelector(".modal_schedule");
+
+    schedule_date.innerHTML = "";
+
     const modal_bg = document.querySelector(".modal_bg");
     const modal = document.querySelector(".modal");
     const modal_date = document.querySelector(".modal_date");
 
-    let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${e.target.id}`;
+    let target = e.target.id;
+    if (target === "") {
+        target = e.target.children[0].id;
+    }
 
-    const schedule_date = document.querySelector(".modal_schedule");
+    let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${target}`;
 
-    modal_date.innerHTML = `${months[calendar.cur_month]} ${e.target.id}, ${calendar.cur_year}`;
+    if (schedule[day_info] === undefined) {
+        return;
+    }
+
+    modal_date.innerHTML = `${months[calendar.cur_month]} ${target}, ${calendar.cur_year}`;
     modal_bg.style.display="block";
     modal.style.display = "block";
-    schedule_date.innerHTML = schedule[day_info].title;
+    schedule_date.innerHTML = 
+    `<span>${schedule[day_info].title}</span>
+    <br>
+    <span>${schedule[day_info].location}</span>
+    <br>
+    <span>${schedule[day_info].time}</span>`;
     
 }
 
