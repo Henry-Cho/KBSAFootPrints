@@ -6,6 +6,12 @@ let calendar = {
     cur_day: ""
 };
 
+// schedule
+
+let schedule = {
+    "2021-10-22": {"title": "Alumni Seminar", "location": "TNR 400", "time": "16:00 PM"}
+}
+
 // get day = sun: 0 - sat: 6 || so today is wed: 3
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -45,18 +51,21 @@ const closeModal = () => {
 
 function popModal(e) {
 
-    console.log(e.target.children[1]);
+    console.log(e)
+    // console.log(e.target.children[1]);
 
     const modal_bg = document.querySelector(".modal_bg");
     const modal = document.querySelector(".modal");
     const modal_date = document.querySelector(".modal_date");
 
-    if (e.target.children[1].id === undefined) {
-        return;
-    }
-    modal_date.innerHTML = e.target.children[1].id;
+    let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${e.target.id}`;
+
+    const schedule_date = document.querySelector(".modal_schedule");
+
+    modal_date.innerHTML = `${months[calendar.cur_month]} ${e.target.id}, ${calendar.cur_year}`;
     modal_bg.style.display="block";
     modal.style.display = "block";
+    schedule_date.innerHTML = schedule[day_info].title;
     
 }
 
@@ -100,13 +109,15 @@ const display = () => {
         html_string += `<div class="row">`;
         if (i === 0) {
             for (let j = 0; j < 7; j++) {
+                let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}`;
+                console.log(schedule[day_info])
                 // first cell
                 if (j === 0 && j === start_day) {
                     html_string += `
                     <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
                             <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
-                            <div class="holiday"></div>
+                            ${schedule[day_info] !== undefined ? `<div class="schedule yes"></div> id="${day_info}"`: `<div class="schedule"></div>`}
                         </div>
                     </div>`;
                     ++day_id;
@@ -126,7 +137,7 @@ const display = () => {
                     <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
                             <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
-                            <div class="holiday"></div>
+                            ${schedule[day_info] !== undefined ? `<div class="schedule yes" id="${day_info}"></div>`: `<div class="schedule"></div>`}
                         </div>
                     </div>`;
                     ++day_id;
@@ -143,12 +154,14 @@ const display = () => {
         }
         else {
             for (let j = 0; j < 7; j++) {
+                let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}`;
+                console.log(schedule[day_info])
                 if (j === 0) {
                     html_string += `
                     <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
                             <div class="${day_id + 1 === parseInt(num_date) && is_cur_cal? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
-                            <div class="holiday"></div>
+                            ${schedule[day_info] !== undefined ? `<div class="schedule yes" id="${day_info}"></div>`: `<div class="schedule"></div>`}
                         </div>
                     </div>`;
                     ++day_id;
@@ -169,7 +182,7 @@ const display = () => {
                 <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                     <div class="upper">
                     <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
-                    <div class="holiday"></div>
+                    ${schedule[day_info] !== undefined ? `<div class="schedule yes" id="${day_info}"></div>`: `<div class="schedule"></div>`}
                     </div>
                 </div>`;
                 ++day_id;
@@ -181,6 +194,9 @@ const display = () => {
     }
     const body_body = document.querySelector(".body-body");
     body_body.innerHTML = html_string;
+
+    const schedule_yes = document.querySelector(".schedule.yes");
+    schedule_yes.parentNode.children[0].style.border = '1px solid orange';
 }
 
 
