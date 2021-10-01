@@ -1,3 +1,18 @@
+// navigation bar
+
+const nav = document.querySelector(".nav_bar");
+const nav_height = nav.getBoundingClientRect().height;
+
+document.addEventListener('scroll', ()=> {
+    if (window.scrollY > nav_height) {
+        nav.classList.add('navbar--dark');
+    }
+
+    else {
+        nav.classList.remove('navbar--dark');
+    }
+})
+
 // calendar
 
 let calendar = {
@@ -9,7 +24,7 @@ let calendar = {
 // schedule
 
 let schedule = {
-    "2021-10-22": {"title": "Alumni Seminar", "location": "TNR 400", "time": "16:00 PM"}
+    "2021-10-22": {"title": "Alumni Seminar", "location": "TNRB 400", "time": "16:00 PM"}
 }
 
 // get day = sun: 0 - sat: 6 || so today is wed: 3
@@ -50,9 +65,6 @@ const closeModal = () => {
 }
 
 function popModal(e) {
-
-    console.log(e)
-    // console.log(e.target.children[1]);
 
     const schedule_date = document.querySelector(".modal_schedule");
 
@@ -126,7 +138,6 @@ const display = () => {
         if (i === 0) {
             for (let j = 0; j < 7; j++) {
                 let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}`;
-                console.log(schedule[day_info])
                 // first cell
                 if (j === 0 && j === start_day) {
                     html_string += `
@@ -171,7 +182,6 @@ const display = () => {
         else {
             for (let j = 0; j < 7; j++) {
                 let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}`;
-                console.log(schedule[day_info])
                 if (j === 0) {
                     html_string += `
                     <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
@@ -212,7 +222,10 @@ const display = () => {
     body_body.innerHTML = html_string;
 
     const schedule_yes = document.querySelector(".schedule.yes");
-    schedule_yes.parentNode.children[0].style.border = '1px solid orange';
+
+    if (schedule_yes !== null) {
+        schedule_yes.parentNode.children[0].style.border = '1px solid orange';
+    }
 }
 
 
