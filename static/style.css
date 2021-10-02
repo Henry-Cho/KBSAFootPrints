@@ -1,27 +1,61 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
+    font-family: sans-serif;
+    position: relative;
+}
+
+.toTop {
+    position: fixed;
+    bottom: 50px;
+    right: 80px;
+    background-color: teal;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 nav {
     width: 100%;
-    background: #ffff00;
     display: flex;
     justify-content: center;
     position: relative;
+    padding: 10px 0;
+    top: 0;
+    position: sticky;
+    z-index: 5;
+    background: white;
+}
+
+nav.navbar--dark {
+    padding: 20px 0;
+    background-color: teal;
+    transition: all 200ms ease-in-out;
 }
 
 .logo {
     position: absolute;
     left: 20px;
     cursor: pointer;
-    padding: 20px;
-    background: chartreuse;
+    width: 200px;
+}
+
+.logo img {
+    width: 62px;
+    height: 62px;
 }
 
 
 .menu_bar {
     display: flex;
-    background: tomato;
+    background: #F5DFBB;
     width: 50%;
 }
 
@@ -33,23 +67,52 @@ nav {
 }
 
 .menu:hover {
-    background: chocolate;
+    background: #F2542D;
     transition: all 200ms ease-in-out;
 }
 
 .banner {
     width: 100%;
-    height: 400px;
+    height: 500px;
     position: relative;
     background: cornflowerblue;
 }
 
 .banner button {
     position: absolute;
-    top: 200px;
+    top: 250px;
     cursor: pointer;
 }
 
+#bannerimg1 {
+    display: none;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    height: 500px;
+    align-content: center; 
+    object-fit: contain;
+}
+
+#bannerimg2 {
+    display: block;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    height: 500px;
+    align-content: center; 
+    object-fit: contain;
+}
+
+#bannerimg3 {
+    display: none;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    height: 500px;
+    align-content: center; 
+    object-fit: contain;
+}
 #prev {
     left: 30px;
 }
@@ -58,29 +121,81 @@ nav {
     right: 30px;
 }
 
+/* modal */
+.modal_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 2;
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    transform: translate(20%, -30%);
+    top: 45%;
+    width: 65%;
+    height: 40%;
+    background: white;
+    opacity: 1;
+    z-index: 3;
+    border-radius: 10px;
+    box-shadow: 0 1rem 2.5rem rgb(27, 64, 94);
+    padding: 10px 20px;
+    display: none;
+}
+
+.modal_date {
+    text-align: center;
+}
+
 /* calendar */
 
 .container {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    margin-bottom: 50px;
 }
 
 .frame {
-    min-width: 960px;
-    width: 100%;
-    border: 1px double black;
-    background-color: antiquewhite;
+    position: relative;
+    margin-top: 60px;
+    width: 50vw;
+    box-shadow: 0 1rem 2.5rem rgb(27, 64, 94);
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .frame {
+        width: 100%;
+    }
+
+    .modal {
+        width: 80%;
+        transform: translate(5%, -30%);
+    }
 }
 
 .cal-header {
-    border-bottom: 1px double black;
+    border-bottom: 1px solid #CCCCCC;
     width: 100%;
-    height: 80px;
+    padding: 25px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    font-size: 48px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #7D8994;
 }
 
 .cal-body {
@@ -90,6 +205,16 @@ nav {
 .cal-header button {
     position: absolute;
     cursor: pointer;
+    border: none;
+    background: none;
+    font-size: large;
+    color: #7D8994;
+    font-weight: bold;
+}
+
+.cal-header button:hover {
+    transform: scale(1.5);
+    transition: all 200ms ease-in-out;
 }
 
 #prevC {
@@ -102,14 +227,15 @@ nav {
 
 .body-header {
     display: flex;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     height: 30px;
     line-height: 30px;
+    color: #7D8994;
 }
 
 .body-header div {
     box-sizing: border-box;
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
     width: 14.5%;
     text-align: center;
 }
@@ -126,18 +252,18 @@ nav {
 .row {
     box-sizing: border-box;
     width: 100%;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     display: flex;
 }
 
 .cell {
     box-sizing: border-box;
     width: 14.5%;
-    height: 150px;
-    background-color: antiquewhite;
-    border-left: 1px solid black;
+    /* height: 100px; */
+    /* border-left: 1px solid black; */
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .cell.first {
@@ -146,13 +272,52 @@ nav {
 
 .upper {
     width: 100%;
+    height: 50px;
     display: flex;
+    justify-content: center;
 }
 
 .day {
-    padding: 8px;
-    width: 10%;
+    /* padding: 8px; */
+    box-sizing: content-box;
+    width: 43px;
+    height: 43px;
+    line-height: 43px;
     text-align: center;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border-radius: 50%;
 }
+
+.day:hover {
+    background: orange;
+}
+
+.day.today {
+    color: white;
+    border-radius: 50%;
+    background: #DD6E46;
+}
+
+.activity {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.act {
+    width: 50%;
+    height: 300px;
+    background: crimson;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 300px;
+}
+
+footer {
+    width: 100%;
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+}
+
