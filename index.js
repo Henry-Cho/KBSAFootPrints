@@ -242,6 +242,13 @@ const display = () => {
 
 
 // banner
-// function slideImg () {
+let arr = ["./static/example1.jpg", "./static/example2.png", "./static/example3.jpg"]
+var imgID = document.getElementById("img1");
+function rightButton() {
+    if (document.getElementById("next")) {
+        imgID.display = none;
+        imgID = "img2"
+        imgID.display = block;
 
-//}
+    }
+}
