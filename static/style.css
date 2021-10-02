@@ -66,7 +66,7 @@ nav.navbar--dark {
     cursor: pointer;
 }
 
-#bannerimg1 {
+.bannerimg {
     display: none;
     margin: auto;
     padding: auto;
@@ -75,26 +75,14 @@ nav.navbar--dark {
     align-content: center; 
     object-fit: contain;
 }
-
-#bannerimg2 {
+.bannerimg.on{
     display: block;
-    margin: auto;
-    padding: auto;
-    width: 80%;
-    height: 500px;
-    align-content: center; 
-    object-fit: contain;
 }
 
-#bannerimg3 {
+.bannerimg.off {
     display: none;
-    margin: auto;
-    padding: auto;
-    width: 80%;
-    height: 500px;
-    align-content: center; 
-    object-fit: contain;
 }
+
 #prev {
     left: 30px;
 }
