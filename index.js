@@ -1,7 +1,12 @@
 // navigation bar
 
 const nav = document.querySelector(".nav_bar");
+const banner = document.querySelector(".banner");
+const banner_height = banner.getBoundingClientRect().height;
 const nav_height = nav.getBoundingClientRect().height;
+
+// go to top button
+const gotoTop = document.querySelector(".toTop");
 
 document.addEventListener('scroll', ()=> {
     if (window.scrollY > nav_height) {
@@ -11,7 +16,13 @@ document.addEventListener('scroll', ()=> {
     else {
         nav.classList.remove('navbar--dark');
     }
+
+    gotoTop.style.opacity = `${window.scrollY / (nav_height + (banner_height / 2))}`;
 })
+
+const scrolltoTop = () => {
+    nav.scrollIntoView(true);
+}
 
 // calendar
 
