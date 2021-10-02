@@ -231,3 +231,6 @@ const display = () => {
 
 
 // banner
+// function slideImg () {
+
+//}
