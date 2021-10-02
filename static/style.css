@@ -1,7 +1,25 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
     position: relative;
+}
+
+.toTop {
+    position: fixed;
+    bottom: 50px;
+    right: 80px;
+    background-color: teal;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 nav {
