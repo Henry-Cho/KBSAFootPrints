@@ -1,7 +1,31 @@
+// navigation bar
+
+const nav = document.querySelector(".nav_bar");
+const nav_height = nav.getBoundingClientRect().height;
+
+document.addEventListener('scroll', ()=> {
+    if (window.scrollY > nav_height) {
+        nav.classList.add('navbar--dark');
+    }
+
+    else {
+        nav.classList.remove('navbar--dark');
+    }
+})
+
+// calendar
+
 let calendar = {
     cur_year: new Date().getFullYear(),
     cur_month: new Date().getMonth(),
+    cur_day: ""
 };
+
+// schedule
+
+let schedule = {
+    "2021-10-22": {"title": "Alumni Seminar", "location": "TNRB 400", "time": "16:00 PM"}
+}
 
 // get day = sun: 0 - sat: 6 || so today is wed: 3
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -28,14 +52,72 @@ const goNext = () => {
     display();
 }
 
+// modal
+
+const closeModal = () => {
+    console.log("DJDJDJD")
+    const modal_bg = document.querySelector(".modal_bg");
+    console.log(modal_bg);
+    const modal = document.querySelector(".modal");
+
+    modal_bg.style.display="none";
+    modal.style.display = "none";
+}
+
+function popModal(e) {
+
+    const schedule_date = document.querySelector(".modal_schedule");
+
+    schedule_date.innerHTML = "";
+
+    const modal_bg = document.querySelector(".modal_bg");
+    const modal = document.querySelector(".modal");
+    const modal_date = document.querySelector(".modal_date");
+
+    let target = e.target.id;
+    if (target === "") {
+        target = e.target.children[0].id;
+    }
+
+    let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${target}`;
+
+    if (schedule[day_info] === undefined) {
+        return;
+    }
+
+    modal_date.innerHTML = `${months[calendar.cur_month]} ${target}, ${calendar.cur_year}`;
+    modal_bg.style.display="block";
+    modal.style.display = "block";
+    schedule_date.innerHTML = 
+    `<span>${schedule[day_info].title}</span>
+    <br>
+    <span>${schedule[day_info].location}</span>
+    <br>
+    <span>${schedule[day_info].time}</span>`;
+    
+}
+
+const days = {"SUN": "Sunday", "MON": "Monday", "TUE": "Tuesday", "WED": "Wednesday", "THU": "Thursday", "FRI": "Friday", "SAT": "Saturday"}
+
 const display = () => {
+    const day = new Date().toString().split(" ");
+
+    const num_date = new Date().toString().split(" ")[2];
+    const today_mon = new Date().getMonth();
+    const today_year = new Date().getFullYear();
+    
+    const is_cur_cal = (today_mon === calendar.cur_month) && (today_year === calendar.cur_year);
+
     const cur_month = document.querySelector("#month");
-    cur_month.innerHTML = `${calendar.cur_year} ${months[calendar.cur_month]}`;
+    cur_month.innerHTML = `${months[calendar.cur_month]} ${calendar.cur_year} `;
 
     let start_day = new Date(`${months[calendar.cur_month]} 1, 2020`).getDay() + 1;
 
     // start > 0 total row = original (5) + 1
     // else total row = 5
+    if (start_day >= 7) {
+        start_day = 0;
+    }
 
     let day_id = 0;
 
@@ -50,20 +132,20 @@ const display = () => {
     if (calendar.cur_month === 1) {
         row_num = 5;
     }
-
+{/* <div class="todo" id="${calendar.cur_year}-${months[calendar.cur_month]}-${day_id+1}"></div> */}
     for (let i = 0; i < row_num; i++) {
         html_string += `<div class="row">`;
         if (i === 0) {
             for (let j = 0; j < 7; j++) {
+                let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}`;
                 // first cell
                 if (j === 0 && j === start_day) {
                     html_string += `
-                    <div class="cell" id="cell${day_id}">
+                    <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
-                            <div class="day">${day_id + 1}</div>
-                            <div class="holiday"></div>
+                            <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
+                            ${schedule[day_info] !== undefined ? `<div class="schedule yes"></div> id="${day_info}"`: `<div class="schedule"></div>`}
                         </div>
-                        <div class="todo" id="${calendar.cur_year}-${months[calendar.cur_month]}-${day_id+1}"></div>
                     </div>`;
                     ++day_id;
                     ++cell_count;
@@ -79,12 +161,11 @@ const display = () => {
                 // put cell id
                 if (j >= start_day) {
                     html_string += `
-                    <div class="cell" id="cell${day_id}">
+                    <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
-                            <div class="day">${day_id + 1}</div>
-                            <div class="holiday"></div>
+                            <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
+                            ${schedule[day_info] !== undefined ? `<div class="schedule yes" id="${day_info}"></div>`: `<div class="schedule"></div>`}
                         </div>
-                        <div class="todo" id="${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}"></div>
                     </div>`;
                     ++day_id;
                     ++cell_count;
@@ -100,14 +181,14 @@ const display = () => {
         }
         else {
             for (let j = 0; j < 7; j++) {
+                let day_info = `${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}`;
                 if (j === 0) {
                     html_string += `
-                    <div class="cell first" id="cell${day_id}">
+                    <div class="cell first" id="cell${day_id}" onclick="popModal(event)">
                         <div class="upper">
-                            <div class="day">${day_id + 1}</div>
-                            <div class="holiday"></div>
+                            <div class="${day_id + 1 === parseInt(num_date) && is_cur_cal? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
+                            ${schedule[day_info] !== undefined ? `<div class="schedule yes" id="${day_info}"></div>`: `<div class="schedule"></div>`}
                         </div>
-                        <div class="todo" id="${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}"></div>
                     </div>`;
                     ++day_id;
                     ++cell_count;
@@ -124,12 +205,11 @@ const display = () => {
                     continue;
                 }
                 html_string += `
-                <div class="cell" id="cell${day_id}">
+                <div class="cell" id="cell${day_id}" onclick="popModal(event)">
                     <div class="upper">
-                    <div class="day">${day_id + 1}</div>
-                    <div class="holiday"></div>
+                    <div class="${day_id + 1=== parseInt(num_date) && is_cur_cal ? "day today" : "day"}" id="${day_id + 1}">${day_id + 1}</div>
+                    ${schedule[day_info] !== undefined ? `<div class="schedule yes" id="${day_info}"></div>`: `<div class="schedule"></div>`}
                     </div>
-                    <div class="todo" id="${calendar.cur_year}-${calendar.cur_month+1}-${day_id+1}"></div>
                 </div>`;
                 ++day_id;
                 ++cell_count;
@@ -140,4 +220,24 @@ const display = () => {
     }
     const body_body = document.querySelector(".body-body");
     body_body.innerHTML = html_string;
+
+    const schedule_yes = document.querySelector(".schedule.yes");
+
+    if (schedule_yes !== null) {
+        schedule_yes.parentNode.children[0].style.border = '1px solid orange';
+    }
+}
+
+
+
+// banner
+let arr = ["./static/example1.jpg", "./static/example2.png", "./static/example3.jpg"]
+var imgID = document.getElementById("img1");
+function rightButton() {
+    if (document.getElementById("next")) {
+        imgID.display = none;
+        imgID = "img2"
+        imgID.display = block;
+
+    }
 }

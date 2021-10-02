@@ -10,9 +10,9 @@
 </head>
 <body onload="display()">
     <!-- Navigation -->
-    <nav>
+    <nav class="nav_bar">
         <!-- logo -->
-        <div class="logo">LOGO</div>
+        <div class="logo"><img src="./static/KBSA_Logo.png" alt="KBSA Logo"></div>
         <!-- menu -->
         <div class="menu_bar">
             <div class="menu">About</div>
@@ -23,33 +23,56 @@
     <!-- Main Banner (contains KBSA upcoming events, Fair ads) -->
     <section class="banner">
         <button id="prev"><</button>
-        <button id="next">></button>
-        <div class="img_container"></div>
+        <button id="next" onclick="rightButton()">></button>
+        <div class="img_container">
+            <img src="./static/example1.jpg" class="bannerimg" id="img1">
+            <img src="./static/example2.png" class="bannerimg" id="img2">
+            <img src="./static/example3.jpg" class="bannerimg" id="img3">
+        </div>
     </section>
     <!-- calendar -->
     <section class="container">
         <!-- calendar frame -->
         <div class="frame">
+            <div class="modal_bg" onclick="closeModal()"></div>
+            <div class="modal">
+                <h2 class="modal_date"></h2>
+                <div class="modal_schedule"></div>
+            </div>
             <!-- calendar header -->
             <div class="cal-header">
+                <span id="today"></span>
                 <span id="month"></span>
                 <button id="prevC" onclick="goPrev()"><</button>
                 <button id="nextC" onclick="goNext()">></button>
             </div>
             <div class="cal-body">
                 <div class="body-header">
-                    <div id="sun">Sunday</div>
-                    <div>Monday</div>
-                    <div>Tuesday</div>
-                    <div>Wednesday</div>
-                    <div>Thursday</div>
-                    <div>Friday</div>
-                    <div>Saturday</div>
+                    <div id="sun">SUN</div>
+                    <div>MON</div>
+                    <div>TUE</div>
+                    <div>WED</div>
+                    <div>THU</div>
+                    <div>FRI</div>
+                    <div>SAT</div>
                 </div>
                 <div class="body-body">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- recent activities -->
+    <section class="activity">
+        <h1>KBSA Recent Activities</h1>
+        <div class="act">activity1</div>
+        <div class="act">activity2</div>
+    </section>
+
+    <!-- footer -->
+    <footer>BYU KBSA <br>
+        Provo, UT 84602, USA
+        385-358-4696
+        2021 © All rights reserved.</footer>
 </body>
 </html>
