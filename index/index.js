@@ -18,11 +18,8 @@ document.addEventListener('scroll', ()=> {
     }
 
     gotoTop.style.opacity = `${window.scrollY / (nav_height + (banner_height / 2))}`;
-})
 
-const scrolltoTop = () => {
-    nav.scrollIntoView(true);
-}
+})
 
 // calendar
 
@@ -239,8 +236,61 @@ const display = () => {
     }
 }
 
+// activities
+
+const act_img = document.querySelector("#img1");
+
+<<<<<<< HEAD:index/index.js
+act_img.addEventListener('click', (e)=> {
+    console.log(e.target.currentSrc);
+    activities.current_activity = e.target.currentSrc;
+    sessionStorage.setItem("img", e.target.currentSrc);
+    sessionStorage.setItem("title", activities[activities.current_activity].title);
+    sessionStorage.setItem("description", activities[activities.current_activity].description);
+
+    window.location.href = "detail.html";
+})
 
 
+let activities = {
+    "current_activity": "",
+"https://w7.pngwing.com/pngs/285/139/png-transparent-elephant-animal-africa-transparent-background-white-background.png": {
+    "title": "ddd",
+    "location": "aaaa",
+    "description": "tttt",
+    "other_pics": ["https://w7.pngwing.com/pngs/285/139/png-transparent-elephant-animal-africa-transparent-background-white-background.png", "https://w7.pngwing.com/pngs/285/139/png-transparent-elephant-animal-africa-transparent-background-white-background.png"]    
+    }
+}
+
+// display in detail.html
+
+function displayDetail() {
+    const content = document.querySelector(".content");
+
+    let html_str = ``;
+
+    // for (let i = 0; i < activities.other_pics.length; i++) {
+    //     html_str += `<img src=${activities.other_pics[i]}> <br>`
+    // } 
+
+    content.innerHTML = `
+    <div><img src=${sessionStorage.getItem("img")} alt="picß"></div>
+    <div>${sessionStorage.getItem("title")}</div>
+    <div>${sessionStorage.getItem("description")}</div>
+    `;
+    // ${html_str}
+}
+
+// to home page
+const toHome = () => {
+    window.location.href = "index.html";
+}
+
+// to about page
+const toAbout = () => {
+    window.location.href = "../about/about.html";
+}
+=======
 // banner
 let arr = ["./static/example1.jpg", "./static/example2.png", "./static/example3.jpg"]
 var imgID = document.getElementById("img1");
@@ -252,3 +302,4 @@ function rightButton() {
 
     }
 }
+>>>>>>> 71f3ccdd44c4f7a2e0be06fdcb1a94286ff07a06:index.js
