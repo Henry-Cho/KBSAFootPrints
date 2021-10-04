@@ -255,32 +255,12 @@ act_img.addEventListener('click', (e) => {
     activities.Current_Activity = e.target.currentSrc;
     sessionStorage.setItem("img", e.target.currentSrc);
     sessionStorage.setItem("title", activities[activities.Current_Activity].title);
-    sessionStorage.setItem("Location", activities[activities.Current_Activity].Location);
-    sessionStorage.setItem("Date", activities[activities.Current_Activity].Date);
-    sessionStorage.setItem("Description", activities[activities.Current_Activity].Description);
+    sessionStorage.setItem("location", activities[activities.Current_Activity].location);
+    sessionStorage.setItem("date", activities[activities.Current_Activity].date);
+    sessionStorage.setItem("description", activities[activities.Current_Activity].description);
 
     window.location.href = "../detail/detail.html"
 })
-
-
-// display in detail.html
-
-function displayDetail() {
-    const content = document.querySelector(".content");
-
-    let html_str = ``;
-
-    // for (let i = 0; i < activities.other_pics.length; i++) {
-    //     html_str += `<img src=${activities.other_pics[i]}> <br>`
-    // } 
-
-    content.innerHTML = `
-    <div><img src=${sessionStorage.getItem("img")} alt="picß"></div>
-    <div>${sessionStorage.getItem("title")}</div>
-    <div>${sessionStorage.getItem("description")}</div>
-    `;
-    // ${html_str}
-}
 
 // to home page
 const toHome = () => {
