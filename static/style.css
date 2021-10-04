@@ -309,3 +309,62 @@ footer {
     padding: 25px 0;
 }
 
+/* contact */
+.general_contact {
+    margin-bottom: 20px;
+}
+
+.contact_container {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.contact_intro {
+    padding: 150px 0 100px;
+    text-align: center;
+}
+
+.email_request_form {
+    display: flex;
+}
+
+.email_request_form img {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.email_form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 80%;
+    height: 30px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    border: 1px solid #CCCCCC;
+    padding: 2px 8px;
+}
+
+textarea {
+    resize: none;
+    width: 80%;
+    border-radius: 20px;
+    border: 1px solid #CCCCCC;
+    padding: 8px 8px;
+    margin-bottom: 20px;
+}
+
+#emailBtn {
+    cursor: pointer;
+}
+
+#emailBtn:hover {
+    background: rgb(41, 178, 241);
+    color: white;
+    transition: all 200ms ease-in-out;
+}
