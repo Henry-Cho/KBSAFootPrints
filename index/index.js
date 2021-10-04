@@ -236,30 +236,32 @@ const display = () => {
     }
 }
 
-// activities
+// activities 
+let activities = {
+    "Current_Activity":
+"https://cdn.pixabay.com/photo/2018/05/05/17/10/business-3376777_1280.jpg",   
+    "title": "KBSA Opening Social",
+    "Location": "Campus Edge ",
+    "Date": "09-00-2021",
+    "Description": "2021 Fall KBSA Opening SOcial",
+
+}
+
 
 const act_img = document.querySelector("#img1");
+act_img.addEventListener('click', (e) => {
 
-act_img.addEventListener('click', (e)=> {
     console.log(e.target.currentSrc);
-    activities.current_activity = e.target.currentSrc;
+    activities.Current_Activity = e.target.currentSrc;
     sessionStorage.setItem("img", e.target.currentSrc);
-    sessionStorage.setItem("title", activities[activities.current_activity].title);
-    sessionStorage.setItem("description", activities[activities.current_activity].description);
+    sessionStorage.setItem("title", activities[activities.Current_Activity].title);
+    sessionStorage.setItem("Location", activities[activities.Current_Activity].Location);
+    sessionStorage.setItem("Date", activities[activities.Current_Activity].Date);
+    sessionStorage.setItem("Description", activities[activities.Current_Activity].Description);
 
-    window.location.href = "detail.html";
+    window.location.href = "../detail/detail.html"
 })
 
-
-let activities = {
-    "current_activity": "",
-"https://w7.pngwing.com/pngs/285/139/png-transparent-elephant-animal-africa-transparent-background-white-background.png": {
-    "title": "ddd",
-    "location": "aaaa",
-    "description": "tttt",
-    "other_pics": ["https://w7.pngwing.com/pngs/285/139/png-transparent-elephant-animal-africa-transparent-background-white-background.png", "https://w7.pngwing.com/pngs/285/139/png-transparent-elephant-animal-africa-transparent-background-white-background.png"]    
-    }
-}
 
 // display in detail.html
 
