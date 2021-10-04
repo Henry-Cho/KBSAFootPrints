@@ -240,7 +240,6 @@ const display = () => {
 
 const act_img = document.querySelector("#img1");
 
-<<<<<<< HEAD:index/index.js
 act_img.addEventListener('click', (e)=> {
     console.log(e.target.currentSrc);
     activities.current_activity = e.target.currentSrc;
@@ -290,7 +289,12 @@ const toHome = () => {
 const toAbout = () => {
     window.location.href = "../about/about.html";
 }
-=======
+
+// to Contact page
+const toContact = () => {
+    window.location.href = "../contact.html";
+}
+
 // banner
 let arr = ["./static/example1.jpg", "./static/example2.png", "./static/example3.jpg"]
 var imgID = document.getElementById("img1");
@@ -302,4 +306,3 @@ function rightButton() {
 
     }
 }
->>>>>>> 71f3ccdd44c4f7a2e0be06fdcb1a94286ff07a06:index.js
