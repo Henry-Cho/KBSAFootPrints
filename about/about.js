@@ -10,7 +10,7 @@ const toAbout = () => {
 
 // to Contact page
 const toContact = () => {
-    window.location.href = "./contact.html";
+    window.location.href = "../contact.html";
 }
 
 const nav = document.querySelector(".nav_bar");
