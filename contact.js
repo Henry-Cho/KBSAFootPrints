@@ -10,3 +10,18 @@ document.addEventListener('scroll', ()=> {
         nav.classList.remove('navbar--dark');
     }
 })
+
+// to home page
+const toHome = () => {
+    window.location.href = "./index/index.html";
+}
+
+// to about page
+const toAbout = () => {
+    window.location.href = "./about/about.html";
+}
+
+// to Contact page
+const toContact = () => {
+    window.location.href = "contact.html";
+}

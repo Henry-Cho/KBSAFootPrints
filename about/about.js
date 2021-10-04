@@ -8,6 +8,11 @@ const toAbout = () => {
     window.location.href = "about.html";
 }
 
+// to Contact page
+const toContact = () => {
+    window.location.href = "./contact.html";
+}
+
 const nav = document.querySelector(".nav_bar");
 const nav_height = nav.getBoundingClientRect().height;
 
