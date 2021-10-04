@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYU KBSA - FootPrint 👣</title>
-    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <script src="index.js" defer></script>
 </head>
 <body onload="display()">
@@ -13,22 +13,22 @@
     <!-- Navigation -->
     <nav class="nav_bar">
         <!-- logo -->
-        <div class="logo"><img src="./static/KBSA_Logo.png" alt="KBSA Logo"></div>
+        <div class="logo" onclick="toHome()"><img src="../static/KBSA_Logo.png" alt="KBSA Logo"></div>
         <!-- menu -->
         <div class="menu_bar">
-            <div class="menu">About</div>
+            <div class="menu" onclick="toAbout()">About</div>
             <div class="menu">FootPrints</div>
-            <div class="menu">Contact</div>
+            <div class="menu" onclick="toContact()">Contact</div>
         </div>
     </nav>
     <!-- Main Banner (contains KBSA upcoming events, Fair ads) -->
     <section class="banner">
         <button id="prev"><</button>
-        <button id="next">></button>
+        <button id="next" onclick="rightButton()">></button>
         <div class="img_container">
-            <img src="./static/example1.jpg" id="bannerimg1">
-            <img src="./static/example2.png" id="bannerimg2">
-            <img src="./static/example3.jpg" id="bannerimg3">
+            <img src="../static/example1.jpg" class="bannerimg" id="img1">
+            <img src="../static/example2.png" class="bannerimg" id="img2">
+            <img src="../static/example3.jpg" class="bannerimg" id="img3">
         </div>
     </section>
     <!-- calendar -->
@@ -67,8 +67,8 @@
     <section class="activity">
         <h1>KBSA Recent Activities</h1>
         <div class="act">
-            <a href="detail.html">
-                <img src= "https://cdn.pixabay.com/photo/2018/05/05/17/10/business-3376777_1280.jpg" class = "activityImage" id ="img1">
+            <a href="../detail/detail.html">
+                <img src= "https://cdn.pixabay.com/photo/2018/05/05/17/10/business-3376777_1280.jpg" class = "activityImage" id ="img">
             </a>
         </div>
         <div class="act">activity2</div>
