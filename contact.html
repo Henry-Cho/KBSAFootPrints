@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBSA - Contact</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <script src="contact.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav_bar">
+        <!-- logo -->
+        <div class="logo" onclick="toHome()"><img src="./static/KBSA_Logo.png" alt="KBSA Logo"></div>
+        <!-- menu -->
+        <div class="menu_bar">
+            <div class="menu" onclick="toAbout()">About</div>
+            <div class="menu">FootPrints</div>
+            <div class="menu" onclick="toContact()">Contact</div>
+        </div>
+    </nav>
+    <!-- contact info -->
+    <section class="contact_intro"><h1>HAVE SOME QUESTIONS?</h1></section>
+    <section class="contact_container">
+        <div class="general_contact">
+            <div class="email_request_form">
+                <img src="https://picsum.photos/200/300" alt="">
+                <div class="email_form">
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="Your Email Address?">
+                    <textarea rows="8" type="text" placeholder="Your Question?"></textarea>
+                    <input type="button" value="SEND MESSAGE" id="emailBtn">
+                </div>
+            </div>
+
+            <h3>Contact Info</h3>
+            <p class="phone">(385)-222-2222</p>
+            <p class="email">byukbsa@gmail.com</p>
+            <p class="facebook">byukbsa</p>
+            <p class="instagram">byukbsa</p>
+        </div>
+
+        <div class="specical_contact">
+            <h3>Donation</h3>
+            <p>anonymous</p>
+            <p>@kbsa-venmo</p>
+        </div> 
+    </section>
+    <!-- footer -->
+    <footer>BYU KBSA <br>
+        Provo, UT 84602, USA
+        385-358-4696
+        2021 © All rights reserved.</footer>
+</body>
+</html>
