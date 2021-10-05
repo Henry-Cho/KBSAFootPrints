@@ -238,49 +238,28 @@ const display = () => {
 
 // activities 
 let activities = {
-    "Current_Activity":
+    "Current_Activity": 
 "https://cdn.pixabay.com/photo/2018/05/05/17/10/business-3376777_1280.jpg",   
     "title": "KBSA Opening Social",
     "Location": "Campus Edge ",
     "Date": "09-00-2021",
     "Description": "2021 Fall KBSA Opening SOcial",
-
 }
 
 
-const act_img = document.querySelector("#img1");
+const act_img = document.querySelector("#imgDDD");
 act_img.addEventListener('click', (e) => {
 
     console.log(e.target.currentSrc);
     activities.Current_Activity = e.target.currentSrc;
     sessionStorage.setItem("img", e.target.currentSrc);
-    sessionStorage.setItem("title", activities[activities.Current_Activity].title);
-    sessionStorage.setItem("Location", activities[activities.Current_Activity].Location);
-    sessionStorage.setItem("Date", activities[activities.Current_Activity].Date);
-    sessionStorage.setItem("Description", activities[activities.Current_Activity].Description);
+    sessionStorage.setItem("title", activities.title);
+    sessionStorage.setItem("Location", activities.Location);
+    sessionStorage.setItem("Date", activities.Date);
+    sessionStorage.setItem("Description", activities.Description);
 
     window.location.href = "../detail/detail.html"
 })
-
-
-// display in detail.html
-
-function displayDetail() {
-    const content = document.querySelector(".content");
-
-    let html_str = ``;
-
-    // for (let i = 0; i < activities.other_pics.length; i++) {
-    //     html_str += `<img src=${activities.other_pics[i]}> <br>`
-    // } 
-
-    content.innerHTML = `
-    <div><img src=${sessionStorage.getItem("img")} alt="picß"></div>
-    <div>${sessionStorage.getItem("title")}</div>
-    <div>${sessionStorage.getItem("description")}</div>
-    `;
-    // ${html_str}
-}
 
 // to home page
 const toHome = () => {
