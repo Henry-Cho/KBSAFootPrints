@@ -5,12 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KBSA_Logo activities</title>
-    <script src="../index/index.js" defer></script>
+    <script src="detail.js" defer></script>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body onload="displayDetail()">
-    <div class="content">
-        <img src= "https://cdn.pixabay.com/photo/2018/05/05/17/10/business-3376777_1280.jpg" class = "activityDetail" id ="img">
-    </div>
+    <button class="toTop" onclick="window.scrollTo(0, 0)">⬆</button>
+    <!-- Navigation -->
+    <nav class="nav_bar">
+        <!-- logo -->
+        <div class="logo" onclick="toHome()"><img src="../static/KBSA_Logo.png" alt="KBSA Logo"></div>
+        <!-- menu -->
+        <div class="menu_bar">
+            <div class="menu" onclick="toAbout()">About</div>
+            <div class="menu">FootPrints</div>
+            <div class="menu" onclick="toContact()">Contact</div>
+        </div>
+    </nav>
+    
+    
+
 </body>
 </html>

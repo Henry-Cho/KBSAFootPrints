@@ -248,7 +248,7 @@ let activities = {
 }
 
 
-const act_img = document.querySelector("#img1");
+const act_img = document.querySelector("img");
 act_img.addEventListener('click', (e) => {
 
     console.log(e.target.currentSrc);

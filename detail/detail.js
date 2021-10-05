@@ -1,3 +1,27 @@
+// navigation bar
+
+const nav = document.querySelector(".nav_bar");
+const banner = document.querySelector(".banner");
+const banner_height = banner.getBoundingClientRect().height;
+const nav_height = nav.getBoundingClientRect().height;
+
+// go to top button
+const gotoTop = document.querySelector(".toTop");
+
+document.addEventListener('scroll', ()=> {
+    if (window.scrollY > nav_height) {
+        nav.classList.add('navbar--dark');
+    }
+
+    else {
+        nav.classList.remove('navbar--dark');
+    }
+
+    gotoTop.style.opacity = `${window.scrollY / (nav_height + (banner_height / 2))}`;
+
+})
+
+
 // display in detail.html
 
 function displayDetail() {
@@ -9,13 +33,27 @@ function displayDetail() {
     //     html_str += `<img src=${activities.other_pics[i]}> <br>`
     // } 
 
-    content.innerHTML = `
-    <div><img src=${sessionStorage.getItem("img")} alt="picß"></div>
-    <div>${sessionStorage.getItem("title")}</div>
-    <div>${sessionStorage.getItem("location")}</div>
-    <div>${sessionStorage.getItem("date")}</div>
-    <div>${sessionStorage.getItem("description")}</div>
+   // content.innerHTML = `
+   // <div><img src=${sessionStorage.getItem("img")} alt="picß"></div>
+   // <div>${sessionStorage.getItem("title")}</div>
+    //<div>${sessionStorage.getItem("location")}</div>
+    //<div>${sessionStorage.getItem("date")}</div>
+    //<div>${sessionStorage.getItem("description")}</div>
 
-    `;
+   // `;
     // ${html_str}
+}
+
+// to home page
+const toAbout = () => {
+    window.location.href = "../about/about.html";
+}
+
+// to Contact page
+const toContact = () => {
+    window.location.href = "../contact.html";
+}
+// to home page
+const toHome = () => {
+    window.location.href = "../index/index.html";
 }
