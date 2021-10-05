@@ -298,13 +298,42 @@ const toContact = () => {
 }
 
 // banner
-let arr = ["./static/example1.jpg", "./static/example2.png", "./static/example3.jpg"]
-var imgID = document.getElementById("img1");
-function rightButton() {
-    if (document.getElementById("next")) {
-        imgID.display = none;
-        imgID = "img2"
-        imgID.display = block;
+document.getElementById("img0").style.display = "block";
 
+let imgArr = ["../static/example0.jpg", "./static/example1.png", "./static/example2.jpg", "./static/example3.jpg"]
+var imgCount = 0;
+var next = document.getElementById("next");
+var prev = document.getElementById("prev");
+
+function rightButton() {
+    
+    var imgShow = document.getElementById("img" + imgCount);
+    imgShow.style.display = "none";
+    imgCount = imgCount + 1;
+
+    if (imgCount >= imgArr.length) {
+        imgCount = imgCount-imgArr.length;
+        document.getElementById("img" + imgCount).style.display = "block";
     }
+    var imgHide = document.getElementById("img" + imgCount);
+    imgHide.style.display = "block";
+    
+    return imgCount;
+}
+
+function leftButton() {
+
+    var imgHide = document.getElementById("img" + imgCount);
+    imgHide.style.display = "none";
+
+    imgCount = imgCount - 1;
+
+    if (imgCount < 0) {
+        imgCount = imgCount + imgArr.length;
+    }
+
+    var imgShow = document.getElementById("img" + imgCount);
+    imgShow.style.display = "block";
+
+    return imgCount;
 }
