@@ -130,11 +130,18 @@ nav.navbar--dark {
     right: 100px;
     position: absolute;
 }
-.img_container:hover .bannerimg {
+.banner_container {
+
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    height: 500px;
+}
+.banner_container:hover .bannerimg {
     opacity: 0.5;
 }
 
-.img_container:hover .img_middle {
+.banner_container:hover .img_middle {
     opacity: 1;
 }
 
